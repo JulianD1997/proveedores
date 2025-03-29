@@ -17,7 +17,7 @@ public class SupplierController : ControllerBase
   /// <summary>
   /// Obtiene todos los proveedores registrados.
   /// </summary>
-  /// <returns>Una lista de proveedores o 204 si no hay datos.</returns
+  /// <returns>Una lista de proveedores o 204 si no hay datos.</returns>
   [HttpGet("get-all")]
   [ProducesResponseType(StatusCodes.Status200OK)]
   [ProducesResponseType(StatusCodes.Status204NoContent)]
