@@ -14,7 +14,10 @@ public class SupplierController : ControllerBase
     _supplierService = supplierService;
     _logger = logger;
   }
-
+  /// <summary>
+  /// Obtiene todos los proveedores registrados.
+  /// </summary>
+  /// <returns>Una lista de proveedores o 204 si no hay datos.</returns
   [HttpGet("get-all")]
   [ProducesResponseType(StatusCodes.Status200OK)]
   [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -25,7 +28,11 @@ public class SupplierController : ControllerBase
     var response = await _supplierService.GetAllSuppliers();
     return response.IsSuccessful ? Ok(response) : NoContent();
   }
-
+  /// <summary>
+  /// Busca un proveedor por su NIT.
+  /// </summary>
+  /// <param name="nit">NIT del proveedor</param>
+  /// <returns>Proveedor si existe, 404 si no.</returns>
   [HttpGet("{nit}")]
   [ProducesResponseType(StatusCodes.Status200OK)]
   [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -37,7 +44,11 @@ public class SupplierController : ControllerBase
     return response.IsSuccessful ? Ok(response) : NotFound(response);
   }
 
-
+  /// <summary>
+  /// Registra un nuevo proveedor.
+  /// </summary>
+  /// <param name="registerSupplier">Datos del proveedor</param>
+  /// <returns>Resultado de la operación</returns>
   [HttpPost("save")]
   [ProducesResponseType(StatusCodes.Status200OK)]
   [ProducesResponseType(typeof(Detail), StatusCodes.Status400BadRequest)]
@@ -48,27 +59,12 @@ public class SupplierController : ControllerBase
     var response = await _supplierService.SaveSupplier(registerSupplier);
     return response.IsSuccessful ? Ok(response) : BadRequest(response);
   }
-  [HttpPost("test-insert")]
-  [ProducesResponseType(StatusCodes.Status200OK)]
-  public async Task<IActionResult> InsertTestSupplier()
-  {
-    _logger.LogInformation("Entrando al endpoint POST: /api/supplier/test-insert");
-
-    var testSupplier = new RegisterSupplierDto
-    {
-      NIT = "99999999",
-      CompanyName = "Proveedor Test",
-      Address = "Calle de prueba",
-      Municipality = "Ciudad Test",
-      Department = "Depto Test",
-      ContactName = "Juan Test",
-      ContactEmail = "juan@test.com"
-    };
-
-    var response = await _supplierService.SaveSupplier(testSupplier);
-    return response.IsSuccessful ? Ok(response) : BadRequest(response);
-  }
-
+  /// <summary>
+  /// Actualiza un proveedor por ID.
+  /// </summary>
+  /// <param name="id">ID del proveedor</param>
+  /// <param name="updateSupplier">Datos a actualizar</param>
+  /// <returns>Resultado de la operación</returns>
   [HttpPut("{id}")]
   [ProducesResponseType(StatusCodes.Status200OK)]
   [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -89,7 +85,11 @@ public class SupplierController : ControllerBase
     var response = await _supplierService.UpdateSupplier(objectId, updateSupplier);
     return response.IsSuccessful ? Ok(response) : NotFound(response);
   }
-
+  /// <summary>
+  /// Elimina un proveedor por ID.
+  /// </summary>
+  /// <param name="id">ID del proveedor</param>
+  /// <returns>Resultado de la operación</returns>
   [HttpDelete("{id}")]
   [ProducesResponseType(StatusCodes.Status200OK)]
   [ProducesResponseType(StatusCodes.Status404NotFound)]
