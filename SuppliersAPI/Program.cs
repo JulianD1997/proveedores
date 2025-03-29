@@ -11,6 +11,7 @@ builder.Services.AddDbContext<SupplierDbContext>(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<ISupplierService, SupplierService>();
 
 var app = builder.Build();
 
