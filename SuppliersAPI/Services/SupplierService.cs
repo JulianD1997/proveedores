@@ -1,5 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using MongoDB.Bson;
+using SuppliersApi.Context;
+using SuppliersApi.Models;
+using SuppliersApi.Models.Dto;
+using SuppliersApi.Services.Interfaces;
+namespace SuppliersApi.Services;
+
 public class SupplierService : ISupplierService
 {
   private readonly SupplierDbContext _dbContext;

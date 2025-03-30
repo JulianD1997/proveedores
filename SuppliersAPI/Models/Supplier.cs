@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.EntityFrameworkCore;
+namespace SuppliersApi.Models;
 [Collection("suppliers")]
 public class Supplier
 {

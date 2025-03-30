@@ -1,5 +1,6 @@
 
 using System.ComponentModel.DataAnnotations;
+namespace SuppliersApi.Models.Dto;
 
 public class RegisterSupplierDto
 {

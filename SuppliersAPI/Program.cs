@@ -1,4 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using SuppliersApi.Context;
+using SuppliersApi.Services;
+using SuppliersApi.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

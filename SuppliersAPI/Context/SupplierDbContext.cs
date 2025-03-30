@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MongoDB.EntityFrameworkCore.Extensions;
+using SuppliersApi.Models;
+namespace SuppliersApi.Context;
 
 public class SupplierDbContext : DbContext
 {

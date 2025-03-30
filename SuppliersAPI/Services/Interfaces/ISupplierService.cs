@@ -1,5 +1,7 @@
 using MongoDB.Bson;
-
+using SuppliersApi.Models;
+using SuppliersApi.Models.Dto;
+namespace SuppliersApi.Services.Interfaces;
 public interface ISupplierService
 {
   Task<Detail> SaveSupplier(RegisterSupplierDto registerSupplier);
