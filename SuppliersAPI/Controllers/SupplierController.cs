@@ -68,56 +68,36 @@ public class SupplierController : ControllerBase
     return response.IsSuccessful ? Ok(response) : BadRequest(response);
   }
   /// <summary>
-  /// Actualiza un proveedor por ID.
+  /// Actualiza un proveedor por nit.
   /// </summary>
-  /// <param name="id">ID del proveedor</param>
+  /// <param name="nit">nit del proveedor</param>
   /// <param name="updateSupplier">Datos a actualizar</param>
   /// <returns>Resultado de la operación</returns>
   [Authorize]
-  [HttpPut("{id}")]
+  [HttpPut("{nit}")]
   [ProducesResponseType(StatusCodes.Status200OK)]
   [ProducesResponseType(StatusCodes.Status404NotFound)]
-  public async Task<IActionResult> Update(string id, UpdateSupplierDto updateSupplier)
+  public async Task<IActionResult> Update(string nit, UpdateSupplierDto updateSupplier)
   {
-    _logger.LogInformation("Entrando al endpoint PUT: /api/supplier/{id}", id);
+    _logger.LogInformation("Entrando al endpoint PUT: /api/supplier/{nit}", nit);
 
-    if (!ObjectId.TryParse(id, out ObjectId objectId))
-    {
-      return BadRequest(new Detail
-      {
-        IsSuccessful = false,
-        Message = "ID inválido",
-        Status = ResponseStatus.BadRequest
-      });
-    }
-
-    var response = await _supplierService.UpdateSupplier(objectId, updateSupplier);
+    var response = await _supplierService.UpdateSupplier(nit, updateSupplier);
     return response.IsSuccessful ? Ok(response) : NotFound(response);
   }
   /// <summary>
   /// Elimina un proveedor por ID.
   /// </summary>
-  /// <param name="id">ID del proveedor</param>
+  /// <param name="nit">nit del proveedor</param>
   /// <returns>Resultado de la operación</returns>
   [Authorize]
-  [HttpDelete("{id}")]
+  [HttpDelete("{nit}")]
   [ProducesResponseType(StatusCodes.Status200OK)]
   [ProducesResponseType(StatusCodes.Status404NotFound)]
-  public async Task<IActionResult> Delete(string id)
+  public async Task<IActionResult> Delete(string nit)
   {
-    _logger.LogInformation("Entrando al endpoint DELETE: /api/supplier/{id}", id);
+    _logger.LogInformation("Entrando al endpoint DELETE: /api/supplier/{nit}", nit);
 
-    if (!ObjectId.TryParse(id, out ObjectId objectId))
-    {
-      return BadRequest(new Detail
-      {
-        IsSuccessful = false,
-        Message = "ID inválido",
-        Status = ResponseStatus.BadRequest
-      });
-    }
-
-    var response = await _supplierService.DeleteSupplier(objectId);
+    var response = await _supplierService.DeleteSupplier(nit);
     return response.IsSuccessful ? Ok(response) : NotFound(response);
   }
 }

@@ -122,12 +122,12 @@ public class SupplierService : ISupplierService
     }
   }
 
-  public async Task<Detail> DeleteSupplier(ObjectId id)
+  public async Task<Detail> DeleteSupplier(string nit)
   {
-    _logger.LogInformation("Eliminando proveedor con ID: {ID}", id);
+    _logger.LogInformation("Eliminando proveedor con nit: {nit}", nit);
     try
     {
-      var supplier = await _dbContext.Suppliers.FirstOrDefaultAsync(s => s.Id == id);
+      var supplier = await _dbContext.Suppliers.FirstOrDefaultAsync(s => s.NIT == nit);
       if (supplier == null)
       {
         _logger.LogWarning("Proveedor no encontrado");
@@ -161,13 +161,13 @@ public class SupplierService : ISupplierService
     }
   }
 
-  public async Task<Detail> UpdateSupplier(ObjectId id, UpdateSupplierDto updateSupplier)
+  public async Task<Detail> UpdateSupplier(string nit, UpdateSupplierDto updateSupplier)
   {
-    _logger.LogWarning("Actualización de proveedor con ID: {ID}", id);
+    _logger.LogWarning("Actualización de proveedor con NIT: {nit}", nit);
 
     try
     {
-      var supplier = await _dbContext.Suppliers.FirstOrDefaultAsync(s => s.Id == id);
+      var supplier = await _dbContext.Suppliers.FirstOrDefaultAsync(s => s.NIT == nit);
       if (supplier == null)
       {
         return new Detail

@@ -15,6 +15,10 @@ public class JwtController : ControllerBase
   {
     _jwtService = jwtService;
   }
+  /// <summary>
+  /// Obtener el token de autorización.
+  /// </summary>
+  /// <returns>Resultado de la operación</returns>
   [HttpPost("get_token")]
   public async Task<IActionResult> GetToken()
   {
