@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: suppliersApi
+    ports:
+      - '8080:80'
+    depends_on:
+      - mongo
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - MONGODB_URI=mongodb://admin:admin1234@mongo:27017
+  mongo:
+    image: mongo:7.0
+    container_name: mongoDb
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin1234
+    volumes:
+      - ./data:/data/db
