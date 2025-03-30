@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
+using SuppliersApi.Models;
+using SuppliersApi.Models.Dto;
+using SuppliersApi.Services.Interfaces;
+namespace SuppliersApi.Controllers;
+
 
 [Route("api/[controller]")]
 [ApiController]

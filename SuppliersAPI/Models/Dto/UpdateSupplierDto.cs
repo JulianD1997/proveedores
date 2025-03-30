@@ -1,3 +1,4 @@
+namespace SuppliersApi.Models.Dto;
 public class UpdateSupplierDto
 {
   public string? NIT { get; set; }
