@@ -10,6 +10,7 @@ public class Detail
   public string Message { get; set; }
 
   public List<Supplier>? Suppliers { get; set; }
+  public string? Token { get; set; }
 }
 public enum ResponseStatus : int
 {

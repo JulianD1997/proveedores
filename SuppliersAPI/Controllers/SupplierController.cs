@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using SuppliersApi.Models;
@@ -22,6 +23,7 @@ public class SupplierController : ControllerBase
   /// Obtiene todos los proveedores registrados.
   /// </summary>
   /// <returns>Una lista de proveedores o 204 si no hay datos.</returns>
+  [Authorize]
   [HttpGet("get-all")]
   [ProducesResponseType(StatusCodes.Status200OK)]
   [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -37,6 +39,7 @@ public class SupplierController : ControllerBase
   /// </summary>
   /// <param name="nit">NIT del proveedor</param>
   /// <returns>Proveedor si existe, 404 si no.</returns>
+  [Authorize]
   [HttpGet("{nit}")]
   [ProducesResponseType(StatusCodes.Status200OK)]
   [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -53,6 +56,7 @@ public class SupplierController : ControllerBase
   /// </summary>
   /// <param name="registerSupplier">Datos del proveedor</param>
   /// <returns>Resultado de la operación</returns>
+  [Authorize]
   [HttpPost("save")]
   [ProducesResponseType(StatusCodes.Status200OK)]
   [ProducesResponseType(typeof(Detail), StatusCodes.Status400BadRequest)]
@@ -69,6 +73,7 @@ public class SupplierController : ControllerBase
   /// <param name="id">ID del proveedor</param>
   /// <param name="updateSupplier">Datos a actualizar</param>
   /// <returns>Resultado de la operación</returns>
+  [Authorize]
   [HttpPut("{id}")]
   [ProducesResponseType(StatusCodes.Status200OK)]
   [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -94,6 +99,7 @@ public class SupplierController : ControllerBase
   /// </summary>
   /// <param name="id">ID del proveedor</param>
   /// <returns>Resultado de la operación</returns>
+  [Authorize]
   [HttpDelete("{id}")]
   [ProducesResponseType(StatusCodes.Status200OK)]
   [ProducesResponseType(StatusCodes.Status404NotFound)]
